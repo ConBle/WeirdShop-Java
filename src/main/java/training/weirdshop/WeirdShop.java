@@ -11,24 +11,24 @@ class WeirdShop {
         for (Item item : items) {
             if (!item.name.equals("Aged Brie") && !item.name.equals("Backstage Pass")) {
                 if (item.quality > 0 && !item.name.equals("Gold Coin")) {
-                    item.quality = item.quality - 1;
+                    item.quality--;
                 }
             } else if (item.quality < 50) {
                 if (!item.name.equals("Backstage Pass")) {
-                    item.quality = item.quality + 1;
+                    item.quality++;
                 } else {
                     if (item.sellIn < 7) {
                         item.quality = (item.quality > 47) ? 50 : item.quality + 3;
                     } else if (item.sellIn < 12) {
                         item.quality = (item.quality > 48) ? 50 : item.quality + 2;
                     } else {
-                        item.quality = item.quality + 1;
+                        item.quality++;
                     }
                 }
             }
 
             if (!item.name.equals("Gold Coin")) {
-                item.sellIn = item.sellIn - 1;
+                item.sellIn--;
             }
 
             if (item.sellIn < 0) {
@@ -36,7 +36,7 @@ class WeirdShop {
                     if (!item.name.equals("Backstage Pass")) {
                         if (item.quality > 0) {
                             if (!item.name.equals("Gold Coin")) {
-                                item.quality = item.quality - 1;
+                                item.quality--;
                             }
                         }
                     } else {
@@ -44,7 +44,7 @@ class WeirdShop {
                     }
                 } else {
                     if (item.quality < 50) {
-                        item.quality = item.quality + 1;
+                        item.quality++;
                     }
                 }
             }

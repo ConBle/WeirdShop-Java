@@ -20,6 +20,11 @@ class WeirdShop {
             }
 
             if (item.name.equals("Backstage Pass")) {
+                if (item.sellIn < 0) {
+                    item.quality = 0;
+                    continue;
+                }
+
                 if (item.sellIn < 6) {
                     item.quality += 3;
                 } else if (item.sellIn < 11) {
@@ -29,7 +34,6 @@ class WeirdShop {
                 }
 
                 if (item.quality > 50) item.quality = 50;
-                if (item.sellIn < 0) item.quality = 0;
                 continue;
             }
 

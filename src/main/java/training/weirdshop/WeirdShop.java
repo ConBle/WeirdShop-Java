@@ -15,11 +15,7 @@ class WeirdShop {
 
             if (item.name.equals("Aged Brie")) {
                 item.quality += (item.sellIn < 0) ? 2 : 1;
-                if (item.quality > 50) item.quality = 50;
-                continue;
-            }
-
-            if (item.name.equals("Backstage Pass")) {
+            } else if (item.name.equals("Backstage Pass")) {
                 if (item.sellIn < 0) {
                     item.quality = 0;
                     continue;
@@ -32,13 +28,13 @@ class WeirdShop {
                 } else {
                     item.quality += 1;
                 }
-
-                if (item.quality > 50) item.quality = 50;
+            } else {
+                item.quality -= (item.sellIn < 0) ? 2 : 1;
+                if (item.quality < 0) item.quality = 0;
                 continue;
             }
 
-            item.quality -= (item.sellIn < 0) ? 2 : 1;
-            if (item.quality < 0) item.quality = 0;
+            if (item.quality > 50) item.quality = 50;
         }
     }
 }

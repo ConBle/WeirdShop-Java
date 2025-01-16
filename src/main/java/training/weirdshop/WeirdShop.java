@@ -18,11 +18,15 @@ class WeirdShop {
 
             if (item.name.equals("Aged Brie")) {
                 updateAgedBrieQuality(item);
-            } else if (item.name.equals("Backstage Pass")) {
-                updateBackstagePassQuality(item);
-            } else {
-                updateOtherItemQuality(item);
+                continue;
             }
+
+            if (item.name.equals("Backstage Pass")) {
+                updateBackstagePassQuality(item);
+                continue;
+            }
+
+            updateOtherItemQuality(item);
         }
     }
 

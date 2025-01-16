@@ -3,6 +3,9 @@ package training.weirdshop;
 class WeirdShop {
     private Item[] items;
 
+    private static int MAXIMUM_QUALITY = 50;    // Does not apply Gold Coin
+    private static int MINIMUM_QUALITY = 0;
+
     public WeirdShop(Item[] items) {
         this.items = items;
     }
@@ -17,7 +20,7 @@ class WeirdShop {
                 item.quality += (item.sellIn < 0) ? 2 : 1;
             } else if (item.name.equals("Backstage Pass")) {
                 if (item.sellIn < 0) {
-                    item.quality = 0;
+                    item.quality = MINIMUM_QUALITY;
                     continue;
                 }
 
@@ -30,11 +33,11 @@ class WeirdShop {
                 }
             } else {
                 item.quality -= (item.sellIn < 0) ? 2 : 1;
-                if (item.quality < 0) item.quality = 0;
+                if (item.quality < MINIMUM_QUALITY) item.quality = MINIMUM_QUALITY;
                 continue;
             }
 
-            if (item.quality > 50) item.quality = 50;
+            if (item.quality > MAXIMUM_QUALITY) item.quality = MAXIMUM_QUALITY;
         }
     }
 }
